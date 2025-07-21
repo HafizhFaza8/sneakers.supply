@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Product Sneakers.supply</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+     <style>
+        body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom right, #f0f4f8, #dbeafe);
+        color: #333;
+        }
+
+        .header-container {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.8em;
+            color: #000000;
+            white-space: nowrap;
+        }
+
+        .search-bar .form-control {
+            padding-left: 40px;
+        }
+
+        .search-bar .fa-search {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+            font-size: 1.1em;
+            z-index: 5;
+        }
+
+        .header-icons .fa-icon-custom {
+            font-size: 1.6em;
+            cursor: pointer;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .header-icons .fa-icon-custom:hover {
+            color: #000;
+        }
+
+        .navigation-bar {
+            background: linear-gradient(circle at center, #ADD8E6, #87CEEB, #4682B4);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .navigation-bar .nav-link {
+            font-weight: bold;
+            transition: color 0.2s ease;
+        }
+
+        .navigation-bar .nav-link:hover {
+            color: #007bff;
+        }
+        
+        .hero-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(white, rgb(106, 195, 255), white);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            color: #007bff;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            padding: 15px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease-out;
+        }
+        .product-card:hover img {
+            transform: translateY(-5px);
+        }
+        .product-card h3 {
+            margin: 10px 0;
+            color: #007bff;
+        }
+        .product-card .price {
+            font-size: 1.2em;
+            color: #28a745;
+            font-weight: bold;
+        }
+        .product-card .old-price {
+            text-decoration: line-through;
+            color: #6c757d;
+            margin-left: 10px;
+        }
+
+        .product-card .btn-add-to-cart {
+            margin-top: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            width: 100%;
+        }
+
+        .product-card .btn-add-to-cart:hover {
+            background-color: #0056b3;
+        }
+
+        .info-section .info-item h3 {
+            color: #007bff;
+        }
+
+        /* CSS for Product Detail Modal */
+        .modal-content {
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .modal-header {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .modal-title {
+            color: #007bff;
+            font-weight: bold;
+        }
+        .modal-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .modal-body .product-price {
+            font-size: 1.8em;
+            color: #28a745;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .modal-body .product-description,
+        .modal-body .product-specs,
+        .modal-body .customer-reviews {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        .modal-body h4 {
+            color: #007bff;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .modal-body p, .modal-body ul li {
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+        .modal-body ul {
+            list-style: none;
+            padding: 0;
+        }
+        .modal-body ul li {
+            margin-bottom: 5px;
+        }
+        .modal-body .review-item {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #eee;
+        }
+        .modal-body .review-item .rating {
+            color: #ffc107;
+        }
+        .modal-footer {
+            border-top: none;
+            padding-top: 0;
+        }
+    </style>
+</head>
+<body>
+  <div class="d-flex flex-column w-100 align-items-center">
+        <header class="header-container container-fluid py-3">
+            <div class="row align-items-center justify-content-between px-3">
+                <div class="col-auto">
+                    <a href="ppw.html" class="text-decoration-none"><div class="logo">Sneakers.supply</div></a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 position-relative search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" class="form-control" placeholder="Cari produk...">
+                </div>
+                <div class="col-auto d-flex gap-4 header-icons">
+                    <i class="fas fa-question-circle fa-icon-custom"></i>
+                </div>
+            </div>
+        </header>
+        <div class="navigation-bar container-fluid py-2">
+            <nav class="navbar navbar-expand-md navbar-light">
+                <div class="container-fluid justify-content-center">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                             <li class="nav-item">
+                                <a class="nav-link" href="ppw.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="product.html">Product</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="size chart.html">Size Chart</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="promotions.html">Promotions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="sign.html">Sign In/Up</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="checkout.html">Checkout</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html">About Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <main class="container main-content-wrapper">
+            <section class="hero-section">
+                <h2>Welcome to Sneakers.supply!</h2>
+                <p>Find the perfect footwear for every occasion. Quality and style guaranteed!</p>
+            </section>
+
+            <section class="container my-4">
+                <h2 class="section-title">ALL PRODUCT</h2>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 product-grid">
+
+                    <!-- Product 1 -->
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="prod1.jpg" class="img-fluid" alt="Adidas Handball Wonder Silver">
+                            <h3>Adidas Handball Wonder Silver</h3>
+                            <p class="price">Rp1.700.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal1">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="prod2.jpg" class="img-fluid" alt="Adidas Samba White Maroon">
+                            <h3>Adidas Samba White Maroon</h3>
+                            <p class="price">Rp1.500.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal2">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="prod3.jpg" class="img-fluid" alt="Nike Dunk Low Whisper Rose">
+                            <h3>Nike Dunk Low Whisper Rose</h3>
+                            <p class="price">Rp2.299.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal3">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+
+                     <!-- Product 4 -->
+                     <div class="col">
+                        <div class="product-card">
+                            <img src="prod4.jpg" class="img-fluid" alt="Adidas Gazelle Blue Almost Pink">
+                            <h3>Adidas Gazelle Blue Almost Pink</h3>
+                            <p class="price">Rp2.599.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal4">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="prod5.jpg" class="img-fluid" alt="Adidas Gazelle Off White">
+                            <h3>Adidas Gazelle Off White</h3>
+                            <p class="price">Rp1.199.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal5">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 6 -->
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="prod6.jpg" class="img-fluid" alt="Adidas Handball Spezial">
+                            <h3>Adidas Handball Spezial</h3>
+                            <p class="price">Rp1.300.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal6">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 7 -->
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="prod7.jpg" class="img-fluid" alt="Puma Speedcat Pink White">
+                            <h3>Puma Speedcat Pink White</h3>
+                            <p class="price">Rp1.899.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal7">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 8 -->
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="prod8.jpg" class="img-fluid" alt="New Balance 530 White Silver">
+                            <h3>New Balance 530 White Silver</h3>
+                            <p class="price">Rp1.699.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal8">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 9 -->
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="prod9.jpg" class="img-fluid" alt="Adidas Bali Tactile Steel Dark Marine">
+                            <h3>Adidas Bali Tactile Steel Dark Marine</h3>
+                            <p class="price">Rp2.800.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal9">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 10 -->
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="prod10.jpg" class="img-fluid" alt="Adidas Handball Spezial Ice Blue">
+                            <h3>Adidas Handball Spezial Ice Blue</h3>
+                            <p class="price">Rp2.459.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal10">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>   
+
+                    <!-- Product 11 -->
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="prod11.jpg" class="img-fluid" alt="Adidas Hochelaga Spezial Cloud White">
+                            <h3>Adidas Hochelaga Spezial Cloud White</h3>
+                            <p class="price">Rp1.800.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal11">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 12 -->
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="prod12.jpg" class="img-fluid" alt="Puma Speedcat Black White">
+                            <h3>Puma Speedcat Black White</h3>
+                            <p class="price">Rp 1.899.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal12">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 13 -->
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="prod13.jpg" class="img-fluid" alt="Puma Speedcat Red White">
+                            <h3>Puma Speedcat Red White</h3>
+                            <p class="price">Rp1.899.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal13">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>    
+
+                    <!-- Product 14 -->
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="prod14.jpg" class="img-fluid" alt="Puma Speedcat Yellow White">
+                            <h3>Puma Speedcat Yellow White</h3>
+                            <p class="price">Rp1.899.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal14">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>   
+
+                    <!-- Product 15 -->
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="prod15.jpg" class="img-fluid" alt="Puma Speedcat Ballet White Pink">
+                            <h3>Puma Speedcat Ballet White Pink</h3>
+                            <p class="price">Rp1.289.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal15">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 16 -->
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="prod16.jpg" class="img-fluid" alt="Puma Speedcat Ballet White Black">
+                            <h3>Puma Speedcat Ballet White Black</h3>
+                            <p class="price">Rp1.289.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal16">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                          
+            </section>
+           <section class="info-section row text-center my-5 p-4 rounded">
+                <div class="col-12 col-md-4 mb-4 mb-md-0 info-item">
+                    <i class="fas fa-check-circle fa-3x mb-3 text-success"></i>
+                    <h3>Quality Products</h3>
+                    <p>100% Original Guaranteed.</p>
+                </div>
+                <div class="col-12 col-md-4 mb-4 mb-md-0 info-item">
+                    <i class="fas fa-handshake fa-3x mb-3 text-info"></i>
+                    <h3>Best Service</h3>
+                    <p>Customer satisfaction is our priority.</p>
+                </div>
+                <div class="col-12 col-md-4 info-item">
+                    <i class="fas fa-sync-alt fa-3x mb-3 text-warning"></i>
+                    <h3>Real-Time Stock</h3>
+                    <p>Stock information is always updated for convenient shopping.</p>
+                </div>
+            </section>
+        </main>
+         <footer class="container-fluid text-center">
+            <p class="mb-1">&copy; 2025 sneakers.supply. All rights reserved.</p>
+            <p class="mb-2">Contact Us: info@sneakers.supply.com | Store Locations: City Center, Mall Avenue</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Deskripsi Produk -->
+
+    <!-- Adidas Handball Wonder Silver (Product 1) -->
+    <div class="modal fade" id="productModal1" tabindex="-1" aria-labelledby="productModal1Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal1Label">Adidas Handball Wonder Silver</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="prod1.jpg" alt="Adidas Handball Wonder Silver" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp1.700.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <!-- Tombol Add to Cart baru -->
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Adidas Handball Wonder Silver', price: 1700000, image: 'prod1.jpg', variant: 'Ukuran: Beragam'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Rasakan perpaduan sempurna antara gaya klasik dan sentuhan modern dengan Adidas Handball Wonder Silver. Sepatu ini dirancang untuk memberikan kenyamanan maksimal dan tampilan yang tak lekang oleh waktu. Dengan aksen silver yang elegan, sepatu ini akan membuat Anda tampil menonjol di setiap kesempatan, baik di lapangan maupun di jalanan.</p>
+                                <p>Dibuat dengan material berkualitas tinggi, Handball Wonder Silver menawarkan daya tahan luar biasa dan dukungan optimal untuk kaki Anda. Sol karet yang responsif memberikan traksi superior, sementara desainnya yang ringan memastikan Anda tetap nyaman sepanjang hari. Cocok untuk penggemar sneaker yang menghargai detail dan kualitas.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> Wonder Silver / Core Black / Cloud White</li>
+                                    <li><strong>Material Atas:</strong> Suede Premium dan Sintetis</li>
+                                    <li><strong>Sol:</strong> Karet Gumsole</li>
+                                    <li><strong>Gaya:</strong> Klasik, Sporty, Lifestyle</li>
+                                    <li><strong>Fitur:</strong> Desain ringan, traksi superior, kenyamanan sepanjang hari</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Budi Serpong.</strong> <span class="rating">★★★★★</span>
+                                    <p>Sepatu ini sangat nyaman dan desainnya keren banget! Cocok buat dipakai sehari-hari.</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Citra Koprasi.</strong> <span class="rating">★★★★☆</span>
+                                    <p>Kualitasnya bagus, pengiriman cepat. Sedikit kebesaran tapi masih oke.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adidas Samba White Maroon (Product 2) -->
+    <div class="modal fade" id="productModal2" tabindex="-1" aria-labelledby="productModal2Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal2Label">Adidas Samba White Maroon</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="prod2.jpg" alt="Adidas Samba White Maroon" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp1.500.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <!-- Tombol Add to Cart baru -->
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Adidas Samba White Maroon', price: 1500000, image: 'prod2.jpg', variant: 'Ukuran: Beragam'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Hidupkan kembali ikon klasik dengan sentuhan warna modern! Adidas Samba White Maroon adalah perpaduan sempurna antara warisan olahraga dan gaya jalanan kontemporer. Desain minimalis dengan 3-stripes khas Adidas kini hadir dengan aksen maroon yang berani, memberikan tampilan yang segar namun tetap otentik.</p>
+                                <p>Dibuat dengan kulit premium yang lembut dan sol karet gum yang ikonik, Samba ini tidak hanya stylish tetapi juga sangat nyaman dan tahan lama. Ideal untuk melengkapi gaya kasual Anda sehari-hari, atau sebagai sentuhan akhir untuk penampilan yang lebih berani. Rasakan kenyamanan legendaris dan daya tarik abadi dari Adidas Samba.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> Cloud White / Maroon / Core Black</li>
+                                    <li><strong>Material Atas:</strong> Kulit Sintetis dan Suede</li>
+                                    <li><strong>Sol:</strong> Karet Gumsole</li>
+                                    <li><strong>Gaya:</strong> Klasik, Lifestyle, Sepak Bola (inspirasi)</li>
+                                    <li><strong>Fitur:</strong> Lidah sepatu bertekstur, 3-stripes ikonik</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Wiro Sableng</strong> <span class="rating">★★★★★</span>
+                                    <p>Samba favorit saya! Warna maroonnya bikin beda dan keren banget.</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Sugeng Tumbler</strong> <span class="rating">★★★★★</span>
+                                    <p>Nyaman dipakai, desainnya timeless. Pasti jadi sepatu andalan.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nike Dunk Low Whisper Rose (Product 3) -->
+    <div class="modal fade" id="productModal3" tabindex="-1" aria-labelledby="productModal3Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal3Label">Nike Dunk Low Whisper Rose</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="prod3.jpg" alt="Nike Dunk Low Whisper Rose" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp2.299.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <!-- Tombol Add to Cart baru -->
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Nike Dunk Low Whisper Rose', price: 2299000, image: 'prod3.jpg', variant: 'Ukuran: Beragam'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Tampil beda dengan sentuhan feminin dan elegan melalui Nike Dunk Low Whisper Rose. Sneaker ikonik ini hadir dengan palet warna yang lembut dan menawan, memadukan nuansa putih bersih dengan aksen "Whisper Rose" yang halus. Desain klasik Dunk Low yang dicintai kini mendapatkan pembaruan yang manis, sempurna untuk gaya sehari-hari Anda.</p>
+                                <p>Dibuat dengan kulit premium yang memberikan tampilan mewah dan daya tahan, serta sol karet yang empuk untuk kenyamanan optimal di setiap langkah. Nike Dunk Low Whisper Rose adalah pilihan tepat bagi Anda yang mencari sneaker stylish, nyaman, dan mudah dipadukan dengan berbagai outfit.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> White / Whisper Rose</li>
+                                    <li><strong>Material Atas:</strong> Kulit Premium</li>
+                                    <li><strong>Sol:</strong> Karet</li>
+                                    <li><strong>Gaya:</strong> Lifestyle, Klasik, Basket (inspirasi)</li>
+                                    <li><strong>Fitur:</strong> Perforasi di bagian jari kaki, kerah empuk</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Budi Bud</strong> <span class="rating">★★★★★</span>
+                                    <p>Warnanya cantik banget, sesuai ekspektasi. Nyaman dipakai dan bikin pede!</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Mas Amba</strong> <span class="rating">★★★★☆</span>
+                                    <p>Hadiah untuk pacar, dia suka banget. Pengiriman aman dan cepat.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Adidas Gazelle Blue Almost Pink (Product 4) -->
+    <div class="modal fade" id="productModal4" tabindex="-1" aria-labelledby="productModal4Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal4Label">Adidas Gazelle Blue Almost Pink</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="prod4.jpg" alt="Adidas Gazelle Blue Almost Pink" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp2.599.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <!-- Tombol Add to Cart baru -->
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Adidas Gazelle Blue Almost Pink', price: 2599000, image: 'prod4.jpg', variant: 'Ukuran: Beragam'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Hadirkan sentuhan warna ceria pada gaya Anda dengan Adidas Gazelle Blue Almost Pink. Sneaker klasik Gazelle ini mendapatkan pembaruan yang menyegarkan dengan kombinasi warna biru yang menenangkan dan aksen pink yang lembut, menciptakan tampilan yang unik dan menarik perhatian.</p>
+                                <p>Dibuat dengan suede premium yang halus dan sol karet yang fleksibel, Gazelle ini menawarkan kenyamanan dan gaya yang tak tertandingi. Desainnya yang ramping dan ringan membuatnya sempurna untuk penggunaan sehari-hari, menambahkan sentuhan retro-chic pada setiap outfit Anda.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> Blue / Almost Pink</li>
+                                    <li><strong>Material Atas:</strong> Suede Premium</li>
+                                    <li><strong>Sol:</strong> Karet</li>
+                                    <li><strong>Gaya:</strong> Klasik, Lifestyle</li>
+                                    <li><strong>Fitur:</strong> Desain ramping, 3-stripes ikonik</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Dewi Lanang.</strong> <span class="rating">★★★★★</span>
+                                    <p>Warnanya cantik banget, perpaduan yang unik. Nyaman dipakai jalan-jalan.</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Rizky Bin Teguh</strong> <span class="rating">★★★★☆</span>
+                                    <p>Kualitas Adidas memang tidak diragukan. Pengiriman cepat.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adidas Gazelle Off White (Product 5) -->
+    <div class="modal fade" id="productModal5" tabindex="-1" aria-labelledby="productModal5Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal5Label">Adidas Gazelle Off White</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="prod5.jpg" alt="Adidas Gazelle Off White" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp1.199.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <!-- Tombol Add to Cart baru -->
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Adidas Gazelle Off White', price: 1199000, image: 'prod5.jpg', variant: 'Ukuran: Beragam'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Elegansi dalam kesederhanaan, itulah Adidas Gazelle Off White. Sneaker klasik ini hadir dalam warna off-white yang serbaguna dan timeless, menjadikannya pilihan sempurna untuk melengkapi berbagai gaya busana Anda. Desain ikonik Gazelle dengan 3-stripes khas Adidas memberikan sentuhan retro yang tak lekang oleh waktu.</p>
+                                <p>Dibuat dengan material suede berkualitas tinggi yang lembut dan nyaman, serta sol karet yang tahan lama untuk traksi optimal. Gazelle Off White adalah investasi gaya yang akan selalu relevan, memberikan kenyamanan dan tampilan stylish di setiap kesempatan.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> Off White / Core Black</li>
+                                    <li><strong>Material Atas:</strong> Suede</li>
+                                    <li><strong>Sol:</strong> Karet</li>
+                                    <li><strong>Gaya:</strong> Klasik, Lifestyle</li>
+                                    <li><strong>Fitur:</strong> Desain minimalis, nyaman dipakai</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Gus2d</strong> <span class="rating">★★★★★</span>
+                                    <p>Warnanya netral, gampang dipaduin. Kualitasnya juga top!</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Fadlan Netral</strong> <span class="rating">★★★★★</span>
+                                    <p>Sangat suka dengan Gazelle ini, nyaman dan stylish.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adidas Handball Spezial (Product 6) -->
+    <div class="modal fade" id="productModal6" tabindex="-1" aria-labelledby="productModal6Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal6Label">Adidas Handball Spezial</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="prod6.jpg" alt="Adidas Handball Spezial" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp1.300.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <!-- Tombol Add to Cart baru -->
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Adidas Handball Spezial', price: 1300000, image: 'prod6.jpg', variant: 'Ukuran: Beragam'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Kembali ke akar olahraga dengan gaya yang tak lekang oleh waktu, Adidas Handball Spezial adalah sneaker yang sempurna untuk penggemar retro. Dirancang ulang dari arsip tahun 70-an, sepatu ini mempertahankan siluet klasik dan detail otentik yang membuatnya menjadi favorit di kalangan pecinta sneaker.</p>
+                                <p>Dibuat dengan suede lembut dan sol karet gum yang memberikan cengkeraman luar biasa, Handball Spezial menawarkan kenyamanan dan daya tahan. Desainnya yang sederhana namun ikonik membuatnya mudah dipadukan dengan berbagai gaya, dari kasual hingga sporty.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> Core Black / Cloud White / Gum</li>
+                                    <li><strong>Material Atas:</strong> Suede</li>
+                                    <li><strong>Sol:</strong> Karet Gumsole</li>
+                                    <li><strong>Gaya:</strong> Klasik, Sporty, Lifestyle</li>
+                                    <li><strong>Fitur:</strong> Desain retro, nyaman, traksi kuat</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Adeknya Yafi</strong> <span class="rating">★★★★★</span>
+                                    <p>Spezial memang tidak pernah mengecewakan. Desainnya klasik dan nyaman banget.</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Dina Palbapang</strong> <span class="rating">★★★★☆</span>
+                                    <p>Sepatu yang bagus, cocok untuk koleksi. Sedikit kotor di bagian suede tapi bisa dibersihkan.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Puma Speedcat Pink White (Product 7) -->
+    <div class="modal fade" id="productModal7" tabindex="-1" aria-labelledby="productModal7Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal7Label">Puma Speedcat Pink White</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="prod7.jpg" alt="Puma Speedcat Pink White" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp1.899.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <!-- Tombol Add to Cart baru -->
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Puma Speedcat Pink White', price: 1899000, image: 'prod7.jpg', variant: 'Ukuran: Beragam'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Rasakan kecepatan dan gaya dengan sentuhan feminin dari Puma Speedcat Pink White. Terinspirasi dari dunia motorsport, sneaker ini memadukan desain ramping dan aerodinamis dengan kombinasi warna pink dan putih yang cerah, menciptakan tampilan yang sporty namun tetap stylish.</p>
+                                <p>Dibuat dengan material berkualitas tinggi yang ringan dan sol karet tipis untuk sensasi "grounded" yang optimal, Speedcat ini memberikan kenyamanan dan kontrol. Ideal untuk penggemar otomotif atau siapa pun yang mencari sneaker dengan desain unik dan performa yang terinspirasi dari balap.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> Pink / White</li>
+                                    <li><strong>Material Atas:</strong> Kulit Sintetis</li>
+                                    <li><strong>Sol:</strong> Karet Tipis</li>
+                                    <li><strong>Gaya:</strong> Motorsport, Lifestyle</li>
+                                    <li><strong>Fitur:</strong> Desain ramping, logo Puma Cat di bagian tumit</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Siska Alkid</strong> <span class="rating">★★★★★</span>
+                                    <p>Warnanya lucu banget, desainnya juga unik. Suka!</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Bima Hahaha</strong> <span class="rating">★★★★☆</span>
+                                    <p>Sepatu balap yang stylish. Agak sempit di awal tapi lama-lama nyaman.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Balance 530 White Silver (Product 8) -->
+    <div class="modal fade" id="productModal8" tabindex="-1" aria-labelledby="productModal8Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal8Label">New Balance 530 White Silver</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="prod8.jpg" alt="New Balance 530 White Silver" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp1.699.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <!-- Tombol Add to Cart baru -->
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'New Balance 530 White Silver', price: 1699000, image: 'prod8.jpg', variant: 'Ukuran: Beragam'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Rasakan kenyamanan dan gaya retro-futuristik dengan New Balance 530 White Silver. Sneaker ini memadukan estetika lari klasik tahun 90-an dengan teknologi modern, menghasilkan sepatu yang tidak hanya stylish tetapi juga sangat nyaman untuk penggunaan sehari-hari.</p>
+                                <p>Dengan kombinasi warna putih bersih dan aksen silver yang berkilau, 530 ini mudah dipadukan dengan berbagai outfit. Teknologi ABZORB di bagian midsole memberikan bantalan superior, menjadikannya pilihan ideal untuk aktivitas ringan atau sekadar tampil kasual dengan sentuhan sporty.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> White / Silver Metallic</li>
+                                    <li><strong>Material Atas:</strong> Mesh dan Sintetis</li>
+                                    <li><strong>Sol:</strong> Karet dengan teknologi ABZORB</li>
+                                    <li><strong>Gaya:</strong> Lari (inspirasi), Lifestyle</li>
+                                    <li><strong>Fitur:</strong> Bantalan superior, desain retro</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Putri Malu</strong> <span class="rating">★★★★★</span>
+                                    <p>Sangat nyaman dan ringan! Cocok buat jalan-jalan seharian.</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Kevin Jamal</strong> <span class="rating">★★★★★</span>
+                                    <p>Desainnya keren, warnanya juga netral. Puas banget!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adidas Bali Tactile Steel Dark Marine (Product 9) -->
+    <div class="modal fade" id="productModal9" tabindex="-1" aria-labelledby="productModal9Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal9Label">Adidas Bali Tactile Steel Dark Marine</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="prod9.jpg" alt="Adidas Bali Tactile Steel Dark Marine" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp2.800.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <!-- Tombol Add to Cart baru -->
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Adidas Bali Tactile Steel Dark Marine', price: 2800000, image: 'prod9.jpg', variant: 'Ukuran: Beragam'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Selami nuansa tropis dengan Adidas Bali Tactile Steel Dark Marine. Bagian dari seri "Island", sneaker ini menghadirkan warna-warna yang terinspirasi dari keindahan pulau Bali, dengan perpaduan biru baja dan marine gelap yang menawan. Desain klasik Adidas dengan sentuhan eksotis.</p>
+                                <p>Dibuat dengan suede premium yang lembut dan sol karet gum yang ikonik, sepatu ini tidak hanya menawarkan tampilan yang unik tetapi juga kenyamanan dan daya tahan. Cocok untuk kolektor atau siapa pun yang ingin menambahkan sentuhan liburan pada gaya sehari-hari mereka.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> Tactile Steel / Dark Marine / Gum</li>
+                                    <li><strong>Material Atas:</strong> Suede Premium</li>
+                                    <li><strong>Sol:</strong> Karet Gumsole</li>
+                                    <li><strong>Gaya:</strong> Klasik, Lifestyle, Kolektor</li>
+                                    <li><strong>Fitur:</strong> Bagian dari seri "Island", desain unik</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Jungkok</strong> <span class="rating">★★★★★</span>
+                                    <p>Warnanya keren banget, jarang ada yang punya. Suka banget sama detailnya.</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Mindiq</strong> <span class="rating">★★★★★</span>
+                                    <p>Nyaman dan bikin gaya jadi beda. Worth it!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adidas Handball Spezial Ice Blue (Product 10) -->
+    <div class="modal fade" id="productModal10" tabindex="-1" aria-labelledby="productModal10Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal10Label">Adidas Handball Spezial Ice Blue</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="prod10.jpg" alt="Adidas Handball Spezial Ice Blue" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp2.459.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <!-- Tombol Add to Cart baru -->
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Adidas Handball Spezial Ice Blue', price: 2459000, image: 'prod10.jpg', variant: 'Ukuran: Beragam'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Segarkan gaya Anda dengan sentuhan dingin dari Adidas Handball Spezial Ice Blue. Sneaker klasik ini hadir dalam nuansa biru es yang menawan, memberikan tampilan yang bersih dan modern pada siluet retro yang dicintai. Sempurna untuk menambahkan pop warna yang lembut pada outfit Anda.</p>
+                                <p>Dibuat dengan suede premium yang lembut dan sol karet gum yang memberikan cengkeraman luar biasa, Handball Spezial ini menawarkan kenyamanan dan daya tahan. Desainnya yang sederhana namun ikonik membuatnya mudah dipadukan dengan berbagai gaya, dari kasual hingga sporty.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> Ice Blue / Cloud White / Gum</li>
+                                    <li><strong>Material Atas:</strong> Suede Premium</li>
+                                    <li><strong>Sol:</strong> Karet Gumsole</li>
+                                    <li><strong>Gaya:</strong> Klasik, Sporty, Lifestyle</li>
+                                    <li><strong>Fitur:</strong> Desain retro, nyaman, traksi kuat</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Bambang Ceper</strong> <span class="rating">★★★★★</span>
+                                    <p>Warnanya cantik banget, sesuai gambar. Nyaman dipakai seharian.</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Teguh Cilik</strong> <span class="rating">★★★★★</span>
+                                    <p>Spezial memang selalu jadi favorit. Kualitasnya bagus.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adidas Hochelaga Spezial Cloud White (Product 11) -->
+    <div class="modal fade" id="productModal11" tabindex="-1" aria-labelledby="productModal11Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal11Label">Adidas Hochelaga Spezial Cloud White</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="prod11.jpg" alt="Adidas Hochelaga Spezial Cloud White" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp1.800.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <!-- Tombol Add to Cart baru -->
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Adidas Hochelaga Spezial Cloud White', price: 1800000, image: 'prod11.jpg', variant: 'Ukuran: Beragam'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Rayakan warisan Adidas dengan Adidas Hochelaga Spezial Cloud White. Sneaker ini adalah penghormatan kepada model klasik dari arsip Adidas, menghadirkan kembali siluet yang dicintai dengan sentuhan modern. Warna cloud white yang bersih memberikan tampilan yang segar dan serbaguna.</p>
+                                <p>Dibuat dengan suede premium yang lembut dan sol karet gum yang memberikan cengkeraman luar biasa, Hochelaga Spezial menawarkan kenyamanan dan daya tahan. Desainnya yang sederhana namun ikonik membuatnya mudah dipadukan dengan berbagai gaya, dari kasual hingga sporty.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> Cloud White / Core Black / Gum</li>
+                                    <li><strong>Material Atas:</strong> Suede Premium</li>
+                                    <li><strong>Sol:</strong> Karet Gumsole</li>
+                                    <li><strong>Gaya:</strong> Klasik, Sporty, Lifestyle</li>
+                                    <li><strong>Fitur:</strong> Desain retro, nyaman, traksi kuat</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Budi Speed</strong> <span class="rating">★★★★★</span>
+                                    <p>Sangat suka dengan desainnya yang klasik. Nyaman dipakai seharian.</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Irpunk</strong> <span class="rating">★★★★☆</span>
+                                    <p>Kualitasnya bagus, pengiriman cepat. Sedikit kotor di bagian suede tapi bisa dibersihkan.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Puma Speedcat Black White (Product 12) -->
+    <div class="modal fade" id="productModal12" tabindex="-1" aria-labelledby="productModal12Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal12Label">Puma Speedcat Black White</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="prod12.jpg" alt="Puma Speedcat Black White" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp1.899.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <!-- Tombol Add to Cart baru -->
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Puma Speedcat Black White', price: 1899000, image: 'prod12.jpg', variant: 'Ukuran: Beragam'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Rasakan kecepatan dan gaya dengan Puma Speedcat Black White. Terinspirasi dari dunia motorsport, sneaker ini memadukan desain ramping dan aerodinamis dengan kombinasi warna hitam dan putih yang klasik, menciptakan tampilan yang sporty namun tetap stylish.</p>
+                                <p>Dibuat dengan material berkualitas tinggi yang ringan dan sol karet tipis untuk sensasi "grounded" yang optimal, Speedcat ini memberikan kenyamanan dan kontrol. Ideal untuk penggemar otomotif atau siapa pun yang mencari sneaker dengan desain unik dan performa yang terinspirasi dari balap.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> Black / White</li>
+                                    <li><strong>Material Atas:</strong> Kulit Sintetis</li>
+                                    <li><strong>Sol:</strong> Karet Tipis</li>
+                                    <li><strong>Gaya:</strong> Motorsport, Lifestyle</li>
+                                    <li><strong>Fitur:</strong> Desain ramping, logo Puma Cat di bagian tumit</li>
+                                    </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Apayo</strong> <span class="rating">★★★★★</span>
+                                    <p>Desainnya keren, cocok buat yang suka gaya sporty.</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Siti i nya dua</strong> <span class="rating">★★★★☆</span>
+                                    <p>Nyaman dipakai, tapi agak licin di permukaan basah.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Puma Speedcat Red White (Product 13) -->
+    <div class="modal fade" id="productModal13" tabindex="-1" aria-labelledby="productModal13Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal13Label">Puma Speedcat Red White</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="prod13.jpg" alt="Puma Speedcat Red White" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp1.899.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <!-- Tombol Add to Cart baru -->
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Puma Speedcat Red White', price: 1899000, image: 'prod13.jpg', variant: 'Ukuran: Beragam'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Tampil berani dengan Puma Speedcat Red White. Sneaker yang terinspirasi dari dunia balap ini hadir dalam kombinasi warna merah menyala dan putih yang kontras, menciptakan pernyataan gaya yang kuat dan dinamis. Desainnya yang ramping dan aerodinamis mencerminkan kecepatan dan presisi.</p>
+                                <p>Dibuat dengan material berkualitas tinggi yang ringan dan sol karet tipis untuk sensasi "grounded" yang optimal, Speedcat ini memberikan kenyamanan dan kontrol. Ideal untuk penggemar otomotif atau siapa pun yang mencari sneaker dengan desain unik dan performa yang terinspirasi dari balap.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> Red / White</li>
+                                    <li><strong>Material Atas:</strong> Kulit Sintetis</li>
+                                    <li><strong>Sol:</strong> Karet Tipis</li>
+                                    <li><strong>Gaya:</strong> Motorsport, Lifestyle</li>
+                                    <li><strong>Fitur:</strong> Desain ramping, logo Puma Cat di bagian tumit</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Fajar Kali</strong> <span class="rating">★★★★★</span>
+                                    <p>Warnanya ngejreng, suka banget! Bikin penampilan jadi lebih hidup.</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Lia Slamet</strong> <span class="rating">★★★★☆</span>
+                                    <p>Sepatu yang stylish, tapi butuh waktu untuk menyesuaikan dengan kaki.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Puma Speedcat Yellow White (Product 14) -->
+    <div class="modal fade" id="productModal14" tabindex="-1" aria-labelledby="productModal14Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal14Label">Puma Speedcat Yellow White</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="prod14.jpg" alt="Puma Speedcat Yellow White" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp1.899.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <!-- Tombol Add to Cart baru -->
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Puma Speedcat Yellow White', price: 1899000, image: 'prod14.jpg', variant: 'Ukuran: Beragam'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Tambahkan kecerahan pada langkah Anda dengan Puma Speedcat Yellow White. Sneaker yang terinspirasi dari dunia balap ini hadir dalam kombinasi warna kuning cerah dan putih yang menarik, menciptakan tampilan yang energik dan penuh gaya. Desainnya yang ramping dan aerodinamis mencerminkan kecepatan dan presisi.</p>
+                                <p>Dibuat dengan material berkualitas tinggi yang ringan dan sol karet tipis untuk sensasi "grounded" yang optimal, Speedcat ini memberikan kenyamanan dan kontrol. Ideal untuk penggemar otomotif atau siapa pun yang mencari sneaker dengan desain unik dan performa yang terinspirasi dari balap.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> Yellow / White</li>
+                                    <li><strong>Material Atas:</strong> Kulit Sintetis</li>
+                                    <li><strong>Sol:</strong> Karet Tipis</li>
+                                    <li><strong>Gaya:</strong> Motorsport, Lifestyle</li>
+                                    <li><strong>Fitur:</strong> Desain ramping, logo Puma Cat di bagian tumit</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Dian Seabank</strong> <span class="rating">★★★★★</span>
+                                    <p>Warnanya bikin semangat! Cocok buat yang suka tampil beda.</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Bagus Wanasaba</strong> <span class="rating">★★★★☆</span>
+                                    <p>Sepatu yang unik, kualitasnya bagus. Pengiriman cepat.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Puma Speedcat Ballet White Pink (Product 15) -->
+    <div class="modal fade" id="productModal15" tabindex="-1" aria-labelledby="productModal15Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal15Label">Puma Speedcat Ballet White Pink</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="prod15.jpg" alt="Puma Speedcat Ballet White Pink" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp1.289.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <!-- Tombol Add to Cart baru -->
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Puma Speedcat Ballet White Pink', price: 1289000, image: 'prod15.jpg', variant: 'Ukuran: Beragam'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Gabungkan keanggunan balet dengan kecepatan motorsport dalam Puma Speedcat Ballet White Pink. Sneaker unik ini menghadirkan siluet Speedcat yang ramping dengan sentuhan feminin dari warna putih bersih dan aksen pink yang lembut. Desainnya yang ringan dan fleksibel memberikan kenyamanan maksimal.</p>
+                                <p>Ideal untuk gaya kasual yang chic atau untuk menambahkan sentuhan sporty pada penampilan Anda. Speedcat Ballet ini adalah pilihan sempurna bagi mereka yang mencari sneaker yang berbeda, memadukan performa dan estetika dengan indah.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> White / Pink</li>
+                                    <li><strong>Material Atas:</strong> Kulit Sintetis</li>
+                                    <li><strong>Sol:</strong> Karet Tipis</li>
+                                    <li><strong>Gaya:</strong> Motorsport, Lifestyle, Balet (inspirasi)</li>
+                                    <li><strong>Fitur:</strong> Desain ramping, ringan, fleksibel</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Gendon Rizki</strong> <span class="rating">★★★★★</span>
+                                    <p>Sangat cantik dan nyaman! Desainnya unik banget.</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Rudi Hooh</strong> <span class="rating">★★★★☆</span>
+                                    <p>Hadiah untuk adik, dia suka banget. Pengiriman cepat.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Puma Speedcat Ballet White Black (Product 16) -->
+    <div class="modal fade" id="productModal16" tabindex="-1" aria-labelledby="productModal16Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal16Label">Puma Speedcat Ballet White Black</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="prod16.jpg" alt="Puma Speedcat Ballet White Black" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp1.289.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <!-- Tombol Add to Cart baru -->
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Puma Speedcat Ballet White Black', price: 1289000, image: 'prod16.jpg', variant: 'Ukuran: Beragam'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Gabungkan keanggunan balet dengan kecepatan motorsport dalam Puma Speedcat Ballet White Black. Sneaker unik ini menghadirkan siluet Speedcat yang ramping dengan kombinasi warna putih bersih dan aksen hitam yang kontras. Desainnya yang ringan dan fleksibel memberikan kenyamanan maksimal.</p>
+                                <p>Ideal untuk gaya kasual yang chic atau untuk menambahkan sentuhan sporty pada penampilan Anda. Speedcat Ballet ini adalah pilihan sempurna bagi mereka yang mencari sneaker yang berbeda, memadukan performa dan estetika dengan indah.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> White / Black</li>
+                                    <li><strong>Material Atas:</strong> Kulit Sintetis</li>
+                                    <li><strong>Sol:</strong> Karet Tipis</li>
+                                    <li><strong>Gaya:</strong> Motorsport, Lifestyle, Balet (inspirasi)</li>
+                                    <li><strong>Fitur:</strong> Desain ramping, ringan, fleksibel</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Ern A</strong> <span class="rating">★★★★★</span>
+                                    <p>Desainnya elegan dan sporty sekaligus. Suka banget!</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>AL Fhatya</strong> <span class="rating">★★★★☆</span>
+                                    <p>Sepatu yang bagus, cocok untuk dipakai sehari-hari.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function addToCart(product) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingProductIndex = cart.findIndex(item => item.name === product.name);
+
+            if (existingProductIndex > -1) {
+                cart[existingProductIndex].quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${product.name} telah ditambahkan ke keranjang!`);
+
+            // Opsional: Langsung arahkan ke halaman checkout setelah menambahkan produk
+            // window.location.href = 'checkout.html';
+        }
+    </script>
+</body>
+</html>

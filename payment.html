@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konfirmasi Pembayaran - Sneakers.supply</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #f0f4f8, #dbeafe);
+            color: #333;
+        }
+
+        .header-container {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.8em;
+            color: #333;
+            white-space: nowrap;
+        }
+
+        /* Removed .navigation-bar styles from previous request */
+        /* Re-adding search bar and header icons styles for consistency */
+        .search-bar .form-control {
+            padding-left: 40px;
+        }
+
+        .search-bar .fa-search {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+            font-size: 1.1em;
+            z-index: 5;
+        }
+
+        .header-icons .fa-icon-custom {
+            font-size: 1.6em;
+            cursor: pointer;
+            transition: color 0.2s ease-in-out;
+        }
+        .header-icons .fa-icon-custom:hover {
+            color: #000;
+        }
+
+        .payment-section {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 30px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .payment-section h2 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        
+        .order-items, .payment-summary, .payment-method, .delivery-address {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        .order-items h4, .payment-summary h4, .payment-method h4, .delivery-address h4 {
+            color: #007bff;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .order-item {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+        .order-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        .order-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 15px;
+        }
+        .order-item .item-details {
+            flex-grow: 1;
+        }
+        .order-item .item-details p {
+            margin: 0;
+            font-weight: bold;
+        }
+        .order-item .item-details .item-variant {
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+        .order-item .item-price {
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .payment-summary .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border: none;
+            border-bottom: 1px solid #eee;
+        }
+
+        .payment-summary .list-group-item:last-child {
+            border-bottom: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #007bff;
+        }
+
+        .btn-place-order {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .info-section .info-item h3 {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex flex-column w-100 align-items-center">
+        <header class="header-container container-fluid py-3">
+            <div class="row align-items-center justify-content-between px-3">
+                <div class="col-auto">
+                    <a href="ppw.html" class="text-decoration-none"><div class="logo">Sneakers.supply</div></a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 position-relative search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" class="form-control" placeholder="Cari produk...">
+                </div>
+                <div class="col-auto d-flex gap-4 header-icons">
+                    <i class="fas fa-question-circle fa-icon-custom"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- No Navigation Bar as per previous request -->
+
+        <main class="container main-content-wrapper">
+            <div class="d-flex justify-content-start mb-3">
+                <!-- Pastikan link kembali ke checkout.html yang benar -->
+                <a href="checkout.html" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left me-2"></i> Kembali ke Keranjang
+                </a>
+            </div>
+
+            <section class="payment-section">
+                <h2>Konfirmasi Pembayaran</h2>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="order-items">
+                            <h4>Produk Pesanan</h4>
+                            <!-- Product items will be dynamically inserted here by JavaScript -->
+                        </div>
+
+                        <div class="delivery-address">
+                            <h4>Alamat Pengiriman</h4>
+                            <p><strong>Nama Penerima:</strong> <span id="display-name"></span></p>
+                            <p><strong>Alamat:</strong> <span id="display-address"></span></p>
+                            <p><strong>Nomor Telepon:</strong> <span id="display-phone"></span></p>
+                            <button class="btn btn-outline-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#editAddressModal">Ubah Alamat</button>
+                        </div>
+
+                        <div class="payment-method">
+                            <h4>Metode Pembayaran</h4>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="bankTransfer" value="Transfer Bank" checked>
+                                <label class="form-check-label" for="bankTransfer">Transfer Bank (BCA, Mandiri, BRI)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard" value="Kartu Kredit/Debit">
+                                <label class="form-check-label" for="creditCard">Kartu Kredit/Debit</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="eWallet" value="E-Wallet">
+                                <label class="form-check-label" for="eWallet">E-Wallet (OVO, GoPay, Dana)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="cod" value="Cash On Delivery">
+                                <label class="form-check-label" for="cod">Cash On Delivery (COD)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="payment-summary">
+                            <h4>Ringkasan Pesanan</h4>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    Subtotal Produk
+                                    <span id="summary-subtotal"></span>
+                                </li>
+                                <li class="list-group-item">
+                                    Biaya Pengiriman
+                                    <span id="summary-shipping"></span>
+                                </li>
+                                <li class="list-group-item">
+                                    Diskon
+                                    <span id="summary-discount"></span>
+                                </li>
+                                <li class="list-group-item">
+                                    Total Pembayaran
+                                    <span class="text-success fs-4" id="summary-total"></span>
+                                </li>
+                            </ul>
+                            <button class="btn btn-primary btn-place-order">Bayar Sekarang</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="info-section row text-center my-5 p-4 rounded">
+                <div class="col-12 col-md-4 mb-4 mb-md-0 info-item">
+                    <i class="fas fa-check-circle fa-3x mb-3 text-success"></i>
+                    <h3>Quality Products</h3>
+                    <p>100% Original Guaranteed.</p>
+                </div>
+                <div class="col-12 col-md-4 mb-4 mb-md-0 info-item">
+                    <i class="fas fa-handshake fa-3x mb-3 text-info"></i>
+                    <h3>Best Service</h3>
+                    <p>Customer satisfaction is our priority.</p>
+                </div>
+                <div class="col-12 col-md-4 info-item">
+                    <i class="fas fa-sync-alt fa-3x mb-3 text-warning"></i>
+                    <h3>Real-Time Stock</h3>
+                    <p>Stock information is always updated for convenient shopping.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="container-fluid text-center">
+            <p class="mb-1">&copy; 2025 sneakers.supply. All rights reserved.</p>
+            <p class="mb-2">Contact Us: info@sneakers.supply.com | Store Locations: City Center, Mall Avenue</p>
+        </footer>
+    </div>
+
+    <!-- Modal for Edit Address -->
+    <div class="modal fade" id="editAddressModal" tabindex="-1" aria-labelledby="editAddressModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editAddressModalLabel">Ubah Alamat Pengiriman</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addressForm">
+                        <div class="mb-3">
+                            <label for="recipientName" class="form-label">Nama Penerima</label>
+                            <input type="text" class="form-control" id="recipientName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fullAddress" class="form-label">Alamat Lengkap</label>
+                            <textarea class="form-control" id="fullAddress" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phoneNumber" class="form-label">Nomor Telepon</label>
+                            <input type="tel" class="form-control" id="phoneNumber" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-primary" id="saveAddressBtn">Simpan Perubahan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Helper function to format currency
+        function formatRupiah(amount) {
+            // Pastikan amount adalah angka sebelum diformat
+            if (typeof amount === 'string') {
+                // Hapus "Rp" dan titik/koma pemisah ribuan, lalu konversi ke angka
+                amount = parseFloat(amount.replace(/Rp|\./g, '').replace(',', '.'));
+            }
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            }).format(amount);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Data Produk dari localStorage ---
+            const cartItemsString = localStorage.getItem('cartItems');
+            let cartItemsData = [];
+            if (cartItemsString) {
+                cartItemsData = JSON.parse(cartItemsString);
+            } 
+            // Tidak ada fallback data statis lagi di sini
+
+            // --- Data Ringkasan dari localStorage ---
+            const cartSummaryString = localStorage.getItem('cartSummary');
+            let orderSummaryData = {
+                subtotal: 'Rp0',
+                shipping: 'Rp0',
+                discount: '-Rp0',
+                total: 'Rp0'
+            };
+            if (cartSummaryString) {
+                orderSummaryData = JSON.parse(cartSummaryString);
+            }
+            // Tidak ada fallback data statis lagi di sini
+
+            // --- Data Alamat Pengiriman dari localStorage atau default ---
+            const deliveryAddressString = localStorage.getItem('deliveryAddress');
+            let deliveryAddressData = {
+                name: "Nama Penerima", // Default yang lebih generik
+                address: "Alamat Lengkap Anda", // Default yang lebih generik
+                phone: "Nomor Telepon Anda" // Default yang lebih generik
+            };
+            if (deliveryAddressString) {
+                deliveryAddressData = JSON.parse(deliveryAddressString);
+            }
+
+
+            // --- Mengisi Bagian "Produk Pesanan" ---
+            const orderItemsContainer = document.querySelector('.order-items');
+            orderItemsContainer.innerHTML = '<h4>Produk Pesanan</h4>'; // Bersihkan konten lama
+
+            if (cartItemsData.length === 0) {
+                orderItemsContainer.innerHTML += '<p class="text-muted">Tidak ada produk dalam pesanan ini.</p>';
+            } else {
+                cartItemsData.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.classList.add('order-item');
+                    itemElement.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="item-details">
+                            <p>${item.name}</p>
+                            <span class="item-variant">${item.variant || ''}</span> <!-- Tambahkan || '' untuk menghindari undefined -->
+                        </div>
+                        <div class="item-price">
+                            <p>${formatRupiah(item.price)}</p>
+                            <span>x${item.quantity}</span>
+                        </div>
+                    `;
+                    orderItemsContainer.appendChild(itemElement);
+                });
+            }
+
+            // --- Mengisi Bagian "Ringkasan Pesanan" ---
+            document.getElementById('summary-subtotal').textContent = orderSummaryData.subtotal;
+            document.getElementById('summary-shipping').textContent = orderSummaryData.shipping;
+            document.getElementById('summary-discount').textContent = orderSummaryData.discount;
+            document.getElementById('summary-total').textContent = orderSummaryData.total;
+
+            // --- Mengisi Bagian "Alamat Pengiriman" ---
+            document.getElementById('display-name').textContent = deliveryAddressData.name;
+            document.getElementById('display-address').textContent = deliveryAddressData.address;
+            document.getElementById('display-phone').textContent = deliveryAddressData.phone;
+
+            // --- Fungsionalitas Ubah Alamat (Modal) ---
+            const editAddressModal = document.getElementById('editAddressModal');
+            editAddressModal.addEventListener('show.bs.modal', function () {
+                // Isi form modal dengan data alamat saat ini
+                document.getElementById('recipientName').value = document.getElementById('display-name').textContent;
+                document.getElementById('fullAddress').value = document.getElementById('display-address').textContent;
+                document.getElementById('phoneNumber').value = document.getElementById('display-phone').textContent;
+            });
+
+            document.getElementById('saveAddressBtn').addEventListener('click', function() {
+                const newName = document.getElementById('recipientName').value;
+                const newAddress = document.getElementById('fullAddress').value;
+                const newPhone = document.getElementById('phoneNumber').value;
+
+                if (newName && newAddress && newPhone) {
+                    // Perbarui data alamat di halaman
+                    document.getElementById('display-name').textContent = newName;
+                    document.getElementById('display-address').textContent = newAddress;
+                    document.getElementById('display-phone').textContent = newPhone;
+
+                    // Perbarui data alamat di localStorage
+                    localStorage.setItem('deliveryAddress', JSON.stringify({
+                        name: newName,
+                        address: newAddress,
+                        phone: newPhone
+                    }));
+
+                    // Tutup modal
+                    const modal = bootstrap.Modal.getInstance(editAddressModal);
+                    modal.hide();
+
+                    alert('Alamat berhasil diperbarui!');
+                } else {
+                    alert('Mohon lengkapi semua kolom alamat.');
+                }
+            });
+
+            // --- Fungsionalitas Tombol "Bayar Sekarang" ---
+            document.querySelector('.btn-place-order').addEventListener('click', function() {
+                const selectedPaymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+                const totalPayment = document.getElementById('summary-total').textContent;
+                alert(`Anda akan membayar sebesar ${totalPayment} dengan metode ${selectedPaymentMethod}.`);
+                // Di aplikasi nyata, ini akan memicu proses pembayaran ke gateway pembayaran
+                // atau mengirim data pesanan ke backend untuk diproses.
+                // Setelah pembayaran berhasil, Anda mungkin ingin mengosongkan keranjang:
+                // localStorage.removeItem('cart');
+                // localStorage.removeItem('cartItems');
+                // localStorage.removeItem('cartSummary');
+                // Redirect ke halaman konfirmasi pesanan atau home
+                // window.location.href = 'order-confirmation.html';
+            });
+        });
+    </script>
+</body>
+</html>

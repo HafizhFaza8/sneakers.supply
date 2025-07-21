@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneakers.supply - Homepage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom right, #f0f4f8, #dbeafe);
+        color: #333;
+        }
+
+
+        .header-container {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.8em;
+            color: #333;
+            white-space: nowrap;
+        }
+
+        .search-bar .form-control {
+            padding-left: 40px;
+        }
+
+        .search-bar .fa-search {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+            font-size: 1.1em;
+            z-index: 5;
+        }
+
+        .header-icons .fa-icon-custom {
+            font-size: 1.6em;
+            cursor: pointer;
+            transition: color 0.2s ease-in-out;
+
+        }
+        .header-icons .fa-icon-custom:hover {
+            color: #000;
+        }
+        .navigation-bar {
+            background: linear-gradient(circle at center, #ADD8E6, #87CEEB, #4682B4);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .navigation-bar .nav-link {
+            font-weight: bold;
+            transition: color 0.2s ease;
+        }
+
+        .navigation-bar .nav-link:hover {
+            color: #007bff;
+        }
+        
+        .hero-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(white, rgb(106, 195, 255), white);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            color: #007bff;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            padding: 15px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease-out;
+        }
+        .product-card:hover img {
+            transform: translateY(-5px);
+        }
+        .product-card h3 {
+            margin: 10px 0;
+            color: #007bff;
+        }
+        .product-card .price {
+            font-size: 1.2em;
+            color: #28a745;
+            font-weight: bold;
+        }
+        .product-card .old-price {
+            text-decoration: line-through;
+            color: #6c757d;
+            margin-left: 10px;
+        }
+
+        .product-card .btn-add-to-cart {
+            margin-top: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            width: 100%;
+        }
+
+        .product-card .btn-add-to-cart:hover {
+            background-color: #0056b3;
+        }
+
+        .info-section .info-item h3 {
+            color: #007bff;
+        }
+        .social-icon {
+            color: #000000;
+            text-decoration: none;
+            padding: 15px;
+            margin-left: 10PX;
+        }
+
+        /* CSS for Product Detail Modal */
+        .modal-content {
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .modal-header {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .modal-title {
+            color: #007bff;
+            font-weight: bold;
+        }
+        .modal-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .modal-body .product-price {
+            font-size: 1.8em;
+            color: #28a745;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .modal-body .product-description,
+        .modal-body .product-specs,
+        .modal-body .customer-reviews {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        .modal-body h4 {
+            color: #007bff;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .modal-body p, .modal-body ul li {
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+        .modal-body ul {
+            list-style: none;
+            padding: 0;
+        }
+        .modal-body ul li {
+            margin-bottom: 5px;
+        }
+        .modal-body .review-item {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #eee;
+        }
+        .modal-body .review-item .rating {
+            color: #ffc107;
+        }
+        .modal-footer {
+            border-top: none;
+            padding-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex flex-column w-100 align-items-center">
+        <header class="header-container container-fluid py-3">
+            <div class="row align-items-center justify-content-between px-3">
+                <div class="col-auto">
+                    <div class="logo">Sneakers.supply
+                        <a class="social-icon" href="https://www.instagram.com/sneakers.supply__?igsh=ajgyOGJxaWtrcnFz">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                        </a>
+                            <a class="social-icon" href="https://www.tiktok.com/@sneakers.supply_?_t=ZS-8xwZSgcbXGs&_r=1">
+                                <ion-icon name="logo-tiktok"></ion-icon>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 position-relative search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" class="form-control" placeholder="Cari produk...">
+                </div>
+                <div class="col-auto d-flex gap-4 header-icons">
+                    <i class="fas fa-question-circle fa-icon-custom"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="navigation-bar container-fluid py-2">
+            <nav class="navbar navbar-expand-md navbar-light">
+                <div class="container-fluid justify-content-center">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="product.html">Product</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="size chart.html">Size Chart</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="promotions.html">Promotions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="sign.html">Sign In/Up</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="checkout.html">Checkout</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="payment.html"></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html">About Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+               <main class="container main-content-wrapper">
+            <section class="hero-section">
+                <h2>Welcome to Sneakers.supply!</h2>
+                <p>Find the perfect footwear for every occasion. Quality and style guaranteed!</p>
+            </section>
+                    
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div>
+            <section class="container my-4">
+                <h2 class="section-title">Latest Products</h2>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 product-grid">
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="sepatu1.jpg" class="img-fluid" alt="Nike SB Dunk Low Orange and Emerald">
+                            <h3>Nike SB Dunk Low Orange and Emerald</h3>
+                            <p class="price">Rp1.729.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal1">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="tas1.jpg" class="img-fluid" alt="Vans WaistBag Large Canvas">
+                            <h3>Vans WaistBag Large Canvas </h3>
+                            <p class="price">Rp399.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal2">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="sepatu2.jpg" class="img-fluid" alt="Vans Style 36 Decon Sf Stargazed">
+                            <h3>Vans Style 36 Decon Sf Stargazed</h3>
+                            <p class="price">Rp1.100.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal3">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="kacamata2.jpg" class="img-fluid" alt="Vans Spicoli 4 Shade Sunglasses Black">
+                            <h3>Vans Spicoli 4 Shade Sunglasses Black</h3>
+                            <p class="price">Rp299.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal4">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="sepatu5.jpg" class="img-fluid" alt="Vans Slip on Checkerboard">
+                            <h3>Vans Slip on Checkerboard</h3>
+                            <p class="price">Rp899.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal5">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="kacamata1.jpg" class="img-fluid" alt="Vans Squared Off Sunglasses">
+                            <h3>Vans Squared Off Sunglasses</h3>
+                            <p class="price">Rp250.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal6">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="sepatu7.jpeg" class="img-fluid" alt="Vans Style 36 Decon Sf Antique Green">
+                            <h3>Vans Style 36 Decon Sf Antique Green</h3>
+                            <p class="price">Rp899.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal7">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="tas2.jpg" class="img-fluid" alt="Backpack Vans Good Sport">
+                            <h3>Backpack Vans Good Sport</h3>
+                            <p class="price">Rp397.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModal8">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="container my-4">
+                <h2 class="section-title">Special Promotions</h2>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 product-grid">
+                    <div class="col">
+                        <div class="product-card position-relative">
+                        <img src="kacamata3.jpg" class="img-fluid" alt="Vans Squared Off Sunglasses (Promo)">
+                            <h3>Half Price Deal!<br>Vans Squared Off Sunglasses</h3>
+                            <p class="price">Rp299.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModalPromo1">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="tas1.jpg" class="img-fluid" alt="Vans WaistBag Large Canvas (Sale)">
+                            <h3>All Items Sale!<br>
+                            Vans WaistBag Large Canvas</h3>
+                            <p class="price">Rp399.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModalPromo2">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="product-card">
+                            <img src="tas2.jpg" class="img-fluid" alt="Backpack Vans Good Sport (BOGO)">
+                            <h3>BUY 1 GET 1 FREE!
+                                Backpack Vans Good Sport
+                            </h3>
+                            <p class="price">Rp397.000</p>
+                            <button class="btn btn-primary btn-add-to-cart" data-bs-toggle="modal" data-bs-target="#productModalPromo3">
+                                <i class="fas fa-info-circle me-2"></i>Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+            </section>
+<section class="info-section row text-center my-5 p-4 rounded">
+                <div class="col-12 col-md-4 mb-4 mb-md-0 info-item">
+                    <i class="fas fa-check-circle fa-3x mb-3 text-success"></i>
+                    <h3>Quality Products</h3>
+                    <p>100% Original Guaranteed.</p>
+                </div>
+                <div class="col-12 col-md-4 mb-4 mb-md-0 info-item">
+                    <i class="fas fa-handshake fa-3x mb-3 text-info"></i>
+                    <h3>Best Service</h3>
+                    <p>Customer satisfaction is our priority.</p>
+                </div>
+                <div class="col-12 col-md-4 info-item">
+                    <i class="fas fa-sync-alt fa-3x mb-3 text-warning"></i>
+                    <h3>Real-Time Stock</h3>
+                    <p>Stock information is always updated for convenient shopping.</p>
+                </div>
+
+            </section>
+    <section class="info-section row text-center my-5 p-4 bg-rounded">
+      <div class="col-12 text-center mb-3">
+        <h4 class="fw-bold text-success">👟 Tips Perawatan Sepatu</h4>
+        <p class="text-muted">Biar sepatu kamu tetap awet dan kece!</p>
+      </div>
+      <div class="col-md-4">
+        <h6 class="text-dark">🧼 Bersihkan Secara Rutin</h6>
+        <p class="small">Gunakan sikat lembut dan sabun khusus <br>untuk menjaga bahan sepatu tetap terawat.</p>
+      </div>
+      <div class="col-md-4">
+        <h6 class="text-dark">🌞 Jemur di Tempat Teduh</h6>
+        <p class="small">Hindari sinar matahari langsung agar warna <br>  sepatu tidak cepat pudar.</p>
+      </div>
+      <div class="col-md-4">
+        <h6 class="text-dark">📦 Simpan di Tempat Kering</h6>
+        <p class="small">Gunakan silica gel dan kotak penyimpanan <br> 
+              agar sepatu bebas jamur dan bau.</p>
+      </div>
+    </div>
+<footer class="container-fluid text-center">
+            <p class="mb-1">&copy; 2025 sneakers.supply. All rights reserved.</p>
+            <p class="mb-2">Contact Us: info@sneakers.supply.com | Store Locations: City Center, Mall Avenue</p>
+        </footer>
+    </div>
+
+    <!-- Modals for Latest Products -->
+
+    <!-- Nike SB Dunk Low Orange and Emerald (Product 1) -->
+    <div class="modal fade" id="productModal1" tabindex="-1" aria-labelledby="productModal1Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal1Label">Nike SB Dunk Low Orange and Emerald</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="sepatu1.jpg" alt="Nike SB Dunk Low Orange and Emerald" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp1.729.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Nike SB Dunk Low Orange and Emerald', price: 1729000, image: 'sepatu1.jpg', variant: 'Ukuran: Beragam'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Nike SB Dunk Low Orange and Emerald adalah perpaduan sempurna antara gaya skate klasik dan warna-warna cerah yang menarik perhatian. Didesain untuk performa di papan skate dan gaya di jalanan, sepatu ini menawarkan kenyamanan dan daya tahan.</p>
+                                <p>Dengan kombinasi warna oranye dan hijau emerald yang unik, Dunk Low ini akan membuat Anda tampil beda. Material premium dan sol karet yang responsif memastikan cengkeraman optimal dan bantalan yang nyaman.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> Orange / Emerald</li>
+                                    <li><strong>Material Atas:</strong> Suede dan Kulit</li>
+                                    <li><strong>Sol:</strong> Karet</li>
+                                    <li><strong>Gaya:</strong> Skate, Lifestyle</li>
+                                    <li><strong>Fitur:</strong> Bantalan Zoom Air, desain low-profile</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Skater Boy</strong> <span class="rating">★★★★★</span>
+                                    <p>Dunk favorit saya! Warnanya keren dan nyaman banget buat nge-skate.</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Fashionista</strong> <span class="rating">★★★★☆</span>
+                                    <p>Desainnya unik, cocok buat koleksi. Pengiriman cepat.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vans WaistBag Large Canvas (Product 2) -->
+    <div class="modal fade" id="productModal2" tabindex="-1" aria-labelledby="productModal2Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal2Label">Vans WaistBag Large Canvas</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="tas1.jpg" alt="Vans WaistBag Large Canvas" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp399.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Vans WaistBag Large Canvas', price: 399000, image: 'tas1.jpg', variant: 'Ukuran: One Size'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Vans WaistBag Large Canvas adalah aksesori serbaguna yang sempurna untuk menyimpan barang-barang penting Anda saat bepergian. Dibuat dari bahan kanvas yang tahan lama, tas pinggang ini menawarkan gaya kasual yang ikonik dari Vans.</p>
+                                <p>Dengan kompartemen utama yang luas dan saku depan beritsleting, Anda dapat dengan mudah mengatur ponsel, dompet, kunci, dan barang kecil lainnya. Tali pinggang yang dapat disesuaikan memastikan kenyamanan saat dipakai di pinggang atau selempang.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> Hitam</li>
+                                    <li><strong>Material:</strong> Kanvas</li>
+                                    <li><strong>Dimensi:</strong> (Perkiraan) 20cm x 15cm x 5cm</li>
+                                    <li><strong>Fitur:</strong> Kompartemen utama, saku depan beritsleting, tali pinggang dapat disesuaikan</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Pratama</strong> <span class="rating">★★★★★</span>
+                                    <p>Tasnya pas banget buat jalan-jalan, muat banyak dan nyaman dipakai.</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Akma</strong> <span class="rating">★★★★☆</span>
+                                    <p>Kualitasnya bagus, tapi warnanya cuma hitam. Pengen ada pilihan lain.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vans Style 36 Decon Sf Stargazed (Product 3) -->
+    <div class="modal fade" id="productModal3" tabindex="-1" aria-labelledby="productModal3Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal3Label">Vans Style 36 Decon Sf Stargazed</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="sepatu2.jpg" alt="Vans Style 36 Decon Sf Stargazed" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp1.100.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Vans Style 36 Decon Sf Stargazed', price: 1100000, image: 'sepatu2.jpg', variant: 'Ukuran: Beragam'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Vans Style 36 Decon Sf Stargazed menghadirkan siluet klasik Vans dengan sentuhan modern dan nyaman. Desain "deconstructed" memberikan tampilan yang lebih santai dan ringan, sementara warna "Stargazed" yang unik menambahkan daya tarik visual.</p>
+                                <p>Dibuat dengan kanvas premium dan suede, sepatu ini menawarkan daya tahan dan kenyamanan. Sol UltraCush Lite memberikan bantalan yang responsif, menjadikannya pilihan ideal untuk penggunaan sehari-hari.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> Stargazed (Biru Keunguan)</li>
+                                    <li><strong>Material Atas:</strong> Kanvas dan Suede</li>
+                                    <li><strong>Sol:</strong> Karet dengan UltraCush Lite</li>
+                                    <li><strong>Gaya:</strong> Klasik, Lifestyle, Deconstructed</li>
+                                    <li><strong>Fitur:</strong> Desain ringan, bantalan responsif</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>SamPitak</strong> <span class="rating">★★★★★</span>
+                                    <p>Warnanya cantik banget, nyaman dipakai dan ringan. Suka!</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Niko</strong> <span class="rating">★★★★☆</span>
+                                    <p>Desainnya unik, tapi agak tipis di bagian atas. Tetap keren.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vans Spicoli 4 Shade Sunglasses Black (Product 4) -->
+    <div class="modal fade" id="productModal4" tabindex="-1" aria-labelledby="productModal4Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal4Label">Vans Spicoli 4 Shade Sunglasses Black</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="kacamata2.jpg" alt="Vans Spicoli 4 Shade Sunglasses Black" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp299.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Vans Spicoli 4 Shade Sunglasses Black', price: 299000, image: 'kacamata2.jpg', variant: 'Ukuran: One Size'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Vans Spicoli 4 Shade Sunglasses Black adalah kacamata hitam klasik yang sempurna untuk melengkapi gaya kasual Anda. Dengan desain bingkai Wayfarer yang tak lekang oleh waktu dan lensa gelap, kacamata ini memberikan perlindungan UV dan tampilan yang stylish.</p>
+                                <p>Ringan dan nyaman dipakai, Spicoli 4 adalah aksesori wajib untuk hari-hari cerah atau sekadar menambahkan sentuhan keren pada penampilan Anda.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna Bingkai:</strong> Hitam</li>
+                                    <li><strong>Warna Lensa:</strong> Gelap</li>
+                                    <li><strong>Material:</strong> Plastik</li>
+                                    <li><strong>Fitur:</strong> Perlindungan UV, desain Wayfarer klasik</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Febri</strong> <span class="rating">★★★★★</span>
+                                    <p>Kacamata Vans memang selalu keren. Pas banget buat gaya santai.</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Ahmad</strong> <span class="rating">★★★★☆</span>
+                                    <p>Nyaman dipakai, tapi agak ringkih. Hati-hati saat menyimpan.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vans Slip on Checkerboard (Product 5) -->
+    <div class="modal fade" id="productModal5" tabindex="-1" aria-labelledby="productModal5Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal5Label">Vans Slip on Checkerboard</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="sepatu5.jpg" alt="Vans Slip on Checkerboard" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp899.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Vans Slip on Checkerboard', price: 899000, image: 'sepatu5.jpg', variant: 'Ukuran: Beragam'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Vans Slip-On Checkerboard adalah ikon gaya skate yang tak lekang oleh waktu. Dengan pola papan catur hitam-putih yang khas, sepatu ini menawarkan kemudahan pemakaian tanpa tali dan tampilan yang langsung dikenali.</p>
+                                <p>Dibuat dengan kanvas yang tahan lama dan sol waffle karet khas Vans, Slip-On ini memberikan kenyamanan dan cengkeraman yang superior. Sempurna untuk gaya kasual sehari-hari atau untuk menambahkan sentuhan klasik pada penampilan Anda.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> Checkerboard (Hitam Putih)</li>
+                                    <li><strong>Material Atas:</strong> Kanvas</li>
+                                    <li><strong>Sol:</strong> Karet Waffle</li>
+                                    <li><strong>Gaya:</strong> Klasik, Skate, Lifestyle</li>
+                                    <li><strong>Fitur:</strong> Desain slip-on, kerah empuk</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Naufal</strong> <span class="rating">★★★★★</span>
+                                    <p>Selalu suka Vans Slip-On. Desainnya ikonik dan nyaman banget.</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Adit</strong> <span class="rating">★★★★★</span>
+                                    <p>Gampang dipakai, cocok buat buru-buru. Kualitasnya juga oke.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vans Squared Off Sunglasses (Product 6) -->
+    <div class="modal fade" id="productModal6" tabindex="-1" aria-labelledby="productModal6Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal6Label">Vans Squared Off Sunglasses</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="kacamata1.jpg" alt="Vans Squared Off Sunglasses" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp250.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Vans Squared Off Sunglasses', price: 250000, image: 'kacamata1.jpg', variant: 'Ukuran: One Size'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Vans Squared Off Sunglasses menawarkan gaya modern dengan bingkai persegi yang tegas. Kacamata hitam ini dirancang untuk memberikan tampilan yang edgy dan perlindungan dari sinar matahari, cocok untuk melengkapi gaya streetwear Anda.</p>
+                                <p>Dengan lensa gelap dan konstruksi yang ringan, kacamata ini nyaman dipakai sepanjang hari. Logo Vans kecil di bagian samping menambahkan sentuhan merek yang otentik.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna Bingkai:</strong> Hitam</li>
+                                    <li><strong>Warna Lensa:</strong> Gelap</li>
+                                    <li><strong>Material:</strong> Plastik</li>
+                                    <li><strong>Fitur:</strong> Perlindungan UV, desain bingkai persegi</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Yudha</strong> <span class="rating">★★★★★</span>
+                                    <p>Desainnya keren dan modern. Pas banget buat gaya kekinian.</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Wira</strong> <span class="rating">★★★★☆</span>
+                                    <p>Ringan dan nyaman dipakai. Kualitasnya sesuai harga.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vans Style 36 Decon Sf Antique Green (Product 7) -->
+    <div class="modal fade" id="productModal7" tabindex="-1" aria-labelledby="productModal7Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal7Label">Vans Style 36 Decon Sf Antique Green</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="sepatu7.jpeg" alt="Vans Style 36 Decon Sf Antique Green" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp899.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Vans Style 36 Decon Sf Antique Green', price: 899000, image: 'sepatu7.jpeg', variant: 'Ukuran: Beragam'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Vans Style 36 Decon Sf Antique Green adalah varian unik dari siluet klasik Vans, menampilkan desain "deconstructed" yang santai dan warna hijau antik yang menawan. Sepatu ini memadukan estetika vintage dengan kenyamanan modern.</p>
+                                <p>Dibuat dengan kanvas dan suede berkualitas tinggi, serta sol UltraCush Lite yang ringan, sepatu ini memberikan bantalan yang responsif dan daya tahan. Cocok untuk Anda yang mencari sneaker dengan karakter dan kenyamanan.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> Antique Green</li>
+                                    <li><strong>Material Atas:</strong> Kanvas dan Suede</li>
+                                    <li><strong>Sol:</strong> Karet dengan UltraCush Lite</li>
+                                    <li><strong>Gaya:</strong> Klasik, Lifestyle, Deconstructed</li>
+                                    <li><strong>Fitur:</strong> Desain ringan, bantalan responsif</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Bagas</strong> <span class="rating">★★★★★</span>
+                                    <p>Warnanya unik banget, suka sama kesan antiknya. Nyaman dipakai.</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Rifqi</strong> <span class="rating">★★★★☆</span>
+                                    <p>Tambahan bagus untuk koleksi Vans saya. Pengiriman aman.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Backpack Vans Good Sport (Product 8) -->
+    <div class="modal fade" id="productModal8" tabindex="-1" aria-labelledby="productModal8Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModal8Label">Backpack Vans Good Sport</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="tas2.jpg" alt="Backpack Vans Good Sport" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp397.000</p>
+                            <p class="text-muted">Stok Tersedia</p>
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Backpack Vans Good Sport', price: 397000, image: 'tas2.jpg', variant: 'Ukuran: One Size'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Backpack Vans Good Sport adalah ransel serbaguna yang dirancang untuk menemani aktivitas sehari-hari Anda. Dengan desain yang sporty dan fungsional, ransel ini cocok untuk sekolah, kuliah, atau kegiatan santai.</p>
+                                <p>Dilengkapi dengan kompartemen utama yang luas, saku depan beritsleting, dan saku samping untuk botol minum, ransel ini menawarkan ruang penyimpanan yang cukup. Tali bahu yang empuk memastikan kenyamanan saat membawa beban.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> Hitam dengan aksen</li>
+                                    <li><strong>Material:</strong> Poliester</li>
+                                    <li><strong>Dimensi:</strong> (Perkiraan) 42cm x 30cm x 15cm</li>
+                                    <li><strong>Fitur:</strong> Kompartemen utama, saku depan, saku samping, tali bahu empuk</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Adent</strong> <span class="rating">★★★★★</span>
+                                    <p>Ranselnya pas buat sekolah, buku-buku muat semua. Desainnya juga keren.</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Novi</strong> <span class="rating">★★★★☆</span>
+                                    <p>Ringan dan nyaman dipakai. Sayangnya tidak ada kompartemen laptop khusus.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals for Special Promotions -->
+
+    <!-- Vans Squared Off Sunglasses (Promo) (Product Promo 1) -->
+    <div class="modal fade" id="productModalPromo1" tabindex="-1" aria-labelledby="productModalPromo1Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalPromo1Label">Vans Squared Off Sunglasses (Promo)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="kacamata3.jpg" alt="Vans Squared Off Sunglasses (Promo)" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp299.000</p>
+                            <p class="text-muted">Stok Terbatas!</p>
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Vans Squared Off Sunglasses (Promo)', price: 299000, image: 'kacamata3.jpg', variant: 'Ukuran: One Size'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Dapatkan Vans Squared Off Sunglasses dengan harga spesial! Kacamata hitam ini menawarkan gaya modern dengan bingkai persegi yang tegas, cocok untuk melengkapi gaya streetwear Anda. Promo terbatas, jangan sampai kehabisan!</p>
+                                <p>Dengan lensa gelap dan konstruksi yang ringan, kacamata ini nyaman dipakai sepanjang hari. Logo Vans kecil di bagian samping menambahkan sentuhan merek yang otentik.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna Bingkai:</strong> Hitam</li>
+                                    <li><strong>Warna Lensa:</strong> Gelap</li>
+                                    <li><strong>Material:</strong> Plastik</li>
+                                    <li><strong>Fitur:</strong> Perlindungan UV, desain bingkai persegi</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Falah</strong> <span class="rating">★★★★★</span>
+                                    <p>Harga promo, kualitas tetap Vans! Langsung beli dua.</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Rahman</strong> <span class="rating">★★★★★</span>
+                                    <p>Kacamata ini bikin penampilan makin keren. Puas banget!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vans WaistBag Large Canvas (Sale) (Product Promo 2) -->
+    <div class="modal fade" id="productModalPromo2" tabindex="-1" aria-labelledby="productModalPromo2Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalPromo2Label">Vans WaistBag Large Canvas (Sale)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="tas1.jpg" alt="Vans WaistBag Large Canvas (Sale)" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp399.000</p>
+                            <p class="text-muted">Diskon Spesial!</p>
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Vans WaistBag Large Canvas (Sale)', price: 399000, image: 'tas1.jpg', variant: 'Ukuran: One Size'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Nikmati diskon spesial untuk Vans WaistBag Large Canvas! Tas pinggang serbaguna ini sempurna untuk menyimpan barang-barang penting Anda saat bepergian. Dibuat dari bahan kanvas yang tahan lama, tas ini menawarkan gaya kasual yang ikonik dari Vans.</p>
+                                <p>Dengan kompartemen utama yang luas dan saku depan beritsleting, Anda dapat dengan mudah mengatur ponsel, dompet, kunci, dan barang kecil lainnya. Tali pinggang yang dapat disesuaikan memastikan kenyamanan saat dipakai di pinggang atau selempang.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> Hitam</li>
+                                    <li><strong>Material:</strong> Kanvas</li>
+                                    <li><strong>Dimensi:</strong> (Perkiraan) 20cm x 15cm x 5cm</li>
+                                    <li><strong>Fitur:</strong> Kompartemen utama, saku depan beritsleting, tali pinggang dapat disesuaikan</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Wahyu</strong> <span class="rating">★★★★★</span>
+                                    <p>Dapat harga bagus, tasnya juga berkualitas. Puas!</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Daffa</strong> <span class="rating">★★★★★</span>
+                                    <p>Sangat berguna untuk aktivitas sehari-hari. Desainnya juga timeless.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Backpack Vans Good Sport (BOGO) (Product Promo 3) -->
+    <div class="modal fade" id="productModalPromo3" tabindex="-1" aria-labelledby="productModalPromo3Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalPromo3Label">Backpack Vans Good Sport (BOGO)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="tas2.jpg" alt="Backpack Vans Good Sport (BOGO)" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="product-price">Rp397.000</p>
+                            <p class="text-muted">Beli 1 Gratis 1!</p>
+                            <button class="btn btn-primary w-100 mb-3" onclick="addToCart({name: 'Backpack Vans Good Sport (BOGO)', price: 397000, image: 'tas2.jpg', variant: 'Ukuran: One Size'})">
+                                <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                            </button>
+
+                            <div class="product-description">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Jangan lewatkan promo Beli 1 Gratis 1 untuk Backpack Vans Good Sport! Ransel serbaguna ini dirancang untuk menemani aktivitas sehari-hari Anda. Dengan desain yang sporty dan fungsional, ransel ini cocok untuk sekolah, kuliah, atau kegiatan santai.</p>
+                                <p>Dilengkapi dengan kompartemen utama yang luas, saku depan beritsleting, dan saku samping untuk botol minum, ransel ini menawarkan ruang penyimpanan yang cukup. Tali bahu yang empuk memastikan kenyamanan saat membawa beban.</p>
+                            </div>
+
+                            <div class="product-specs">
+                                <h4>Spesifikasi Produk</h4>
+                                <ul>
+                                    <li><strong>Warna:</strong> Hitam dengan aksen</li>
+                                    <li><strong>Material:</strong> Poliester</li>
+                                    <li><strong>Dimensi:</strong> (Perkiraan) 42cm x 30cm x 15cm</li>
+                                    <li><strong>Fitur:</strong> Kompartemen utama, saku depan, saku samping, tali bahu empuk</li>
+                                </ul>
+                            </div>
+
+                            <div class="customer-reviews">
+                                <h4>Ulasan Pelanggan</h4>
+                                <div class="review-item">
+                                    <strong>Dinda</strong> <span class="rating">★★★★★</span>
+                                    <p>Beli satu dapat dua, sangat worth it! Kualitasnya juga bagus.</p>
+                                </div>
+                                <div class="review-item">
+                                    <strong>Refa</strong> <span class="rating">★★★★★</span>
+                                    <p>Bisa buat sendiri satu, yang satu lagi buat hadiah. Mantap!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function addToCart(product) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingProductIndex = cart.findIndex(item => item.name === product.name);
+
+            if (existingProductIndex > -1) {
+                cart[existingProductIndex].quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${product.name} telah ditambahkan ke keranjang!`);
+
+            // Opsional: Langsung arahkan ke halaman checkout setelah menambahkan produk
+            // window.location.href = 'checkout.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keranjang Belanja - Sneakers.supply</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom right, #f0f4f8, #dbeafe);
+        color: #333;
+        }
+
+        .header-container {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.8em;
+            color: #333;
+            white-space: nowrap;
+        }
+
+        .search-bar .form-control {
+            padding-left: 40px;
+        }
+
+        .search-bar .fa-search {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+            font-size: 1.1em;
+            z-index: 5;
+        }
+
+        .header-icons .fa-icon-custom {
+            font-size: 1.6em;
+            cursor: pointer;
+            transition: color 0.2s ease-in-out;
+        }
+        .header-icons .fa-icon-custom:hover {
+            color: #000;
+        }
+
+        .navigation-bar {
+            background: linear-gradient(circle at center, #ADD8E6, #87CEEB, #4682B4);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .navigation-bar .nav-link {
+            font-weight: bold;
+            transition: color 0.2s ease;
+        }
+
+        .navigation-bar .nav-link:hover {
+            color: #007bff;
+        }
+
+        .cart-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+        }
+
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+        }
+
+        .cart-item-details h5 {
+            margin-bottom: 5px;
+            color: #007bff;
+        }
+
+        .cart-item-details .price {
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-control button {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+        }
+
+        .total-summary {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .total-summary h4 {
+            margin-bottom: 15px;
+            color: #007bff;
+        }
+
+        .total-summary .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border: none;
+            border-bottom: 1px solid #eee;
+        }
+
+        .total-summary .list-group-item:last-child {
+            border-bottom: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #007bff;
+        }
+
+        .btn-checkout {
+            width: 100%;
+            margin-top: 20px;
+            font-size: 1.1em;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex flex-column w-100 align-items-center">
+        <header class="header-container container-fluid py-3">
+            <div class="row align-items-center justify-content-between px-3">
+                <div class="col-auto">
+                    <div class="logo">Sneakers.supply</div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 position-relative search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" class="form-control" placeholder="Cari produk...">
+                </div>
+                <div class="col-auto d-flex gap-4 header-icons">
+                    <i class="fas fa-question-circle fa-icon-custom"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="navigation-bar container-fluid py-2">
+            <nav class="navbar navbar-expand-md navbar-light">
+                <div class="container-fluid justify-content-center">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                                        
+                                        <li class="nav-item">
+                                        <a class="nav-link" href="ppw.html">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                         <a class="nav-link" href="product.html">Product</a>
+                                        </li>
+                                        <li class="nav-item">
+                                         <a class="nav-link" href="size chart.html">Size Chart</a>
+                                        </li>
+                                        <li class="nav-item">
+                                         <a class="nav-link" href="promotions.html">Promotions</a>
+                                        </li>
+                                        <li class="nav-item">
+                                         <a class="nav-link" href="sign.html">Sign In/Up</a>
+                                        </li>
+                                        <li class="nav-item">
+                                         <a class="nav-link active" aria-current="page" href="keranjang.html">Checkout</a>
+                                        </li>
+                                         <li class="nav-item">
+                                         <a class="nav-link" href="about.html">About Us</a>
+                                        </li>
+                                        <li class="nav-item">
+                                <a class="nav-link" href="payment.html"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <main class="container my-4">
+            <h2 class="text-center mb-4" style="color: #007bff;">Keranjang Belanja Anda</h2>
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <div id="cartItemsContainer">
+                        </div>
+
+                    <div id="emptyCartMessage" class="alert alert-info text-center" style="display: none;">
+                        Keranjang Anda kosong. Yuk, belanja sekarang!
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="total-summary">
+                        <h4>Ringkasan Belanja</h4>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                Subtotal
+                                <span id="subtotal">Rp0</span>
+                            </li>
+                            <li class="list-group-item">
+                                Ongkos Kirim
+                                <span id="shippingCost">Rp0</span>
+                            </li>
+                            <li class="list-group-item">
+                                Diskon
+                                <span id="discount">-Rp0</span>
+                            </li>
+                            <li class="list-group-item">
+                                Total
+                                <span id="totalAmount" class="text-success">Rp0</span>
+                            </li>
+                        </ul>
+                        <!-- Ubah href menjadi id dan tambahkan event listener -->
+                        <button id="checkoutButton" class="btn btn-primary btn-checkout">Lanjutkan ke Pembayaran</button>
+                        <a href="ppw.html" class="btn btn-outline-secondary btn-checkout mt-2">Lanjut Belanja</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="container-fluid text-center">
+            <p class="mb-1">&copy; 2025 sneakers.supply. All rights reserved.</p>
+            <p class="mb-2">Contact Us: info@sneakers.supply.com | Store Locations: City Center, Mall Avenue</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartItemsContainer = document.getElementById('cartItemsContainer');
+            const emptyCartMessage = document.getElementById('emptyCartMessage');
+            const subtotalSpan = document.getElementById('subtotal');
+            const shippingCostSpan = document.getElementById('shippingCost');
+            const discountSpan = document.getElementById('discount');
+            const totalAmountSpan = document.getElementById('totalAmount');
+            const checkoutButton = document.getElementById('checkoutButton'); // Dapatkan tombol checkout
+
+            const shippingCost = 25000; // Contoh ongkos kirim tetap
+            const discount = 0; // Contoh diskon
+
+            // Function to render cart items
+            function renderCart() {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cartItemsContainer.innerHTML = ''; // Clear previous items
+
+                let subtotal = 0;
+
+                if (cart.length === 0) {
+                    emptyCartMessage.style.display = 'block';
+                    checkoutButton.disabled = true; // Nonaktifkan tombol checkout jika keranjang kosong
+                } else {
+                    emptyCartMessage.style.display = 'none';
+                    checkoutButton.disabled = false; // Aktifkan tombol checkout
+                    cart.forEach((item, index) => {
+                        const cartItemDiv = document.createElement('div');
+                        cartItemDiv.classList.add('cart-item');
+                        cartItemDiv.innerHTML = `
+                            <img src="${item.image}" alt="${item.name}">
+                            <div class="cart-item-details">
+                                <h5>${item.name}</h5>
+                                <p class="mb-1">Kuantitas: ${item.quantity}</p>
+                                <p class="price">Rp${(item.price * item.quantity).toLocaleString('id-ID')}</p>
+                            </div>
+                            <div class="quantity-control ms-auto">
+                                <button class="btn btn-outline-secondary btn-sm decrement-quantity" data-index="${index}">-</button>
+                                <span class="quantity fs-5">${item.quantity}</span>
+                                <button class="btn btn-outline-secondary btn-sm increment-quantity" data-index="${index}">+</button>
+                                <button class="btn btn-danger btn-sm ms-3 remove-item" data-index="${index}">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        `;
+                        cartItemsContainer.appendChild(cartItemDiv);
+                        subtotal += item.price * item.quantity;
+                    });
+                }
+
+                // Update total summary
+                const currentSubtotal = subtotal;
+                const currentShippingCost = shippingCost;
+                const currentDiscount = discount;
+                const currentTotal = currentSubtotal + currentShippingCost - currentDiscount;
+
+                subtotalSpan.textContent = `Rp${currentSubtotal.toLocaleString('id-ID')}`;
+                shippingCostSpan.textContent = `Rp${currentShippingCost.toLocaleString('id-ID')}`;
+                discountSpan.textContent = `-Rp${currentDiscount.toLocaleString('id-ID')}`;
+                totalAmountSpan.textContent = `Rp${currentTotal.toLocaleString('id-ID')}`;
+
+                // Simpan ringkasan belanja ke localStorage
+                localStorage.setItem('cartSummary', JSON.stringify({
+                    subtotal: `Rp${currentSubtotal.toLocaleString('id-ID')}`,
+                    shipping: `Rp${currentShippingCost.toLocaleString('id-ID')}`,
+                    discount: `-Rp${currentDiscount.toLocaleString('id-ID')}`,
+                    total: `Rp${currentTotal.toLocaleString('id-ID')}`
+                }));
+
+                // Simpan item keranjang ke localStorage (untuk ditampilkan di payment.html)
+                localStorage.setItem('cartItems', JSON.stringify(cart));
+
+                addCartEventListeners(); // Re-attach event listeners after rendering
+            }
+
+            // Function to add event listeners to cart controls (increment, decrement, remove)
+            function addCartEventListeners() {
+                // Increment Quantity
+                document.querySelectorAll('.increment-quantity').forEach(button => {
+                    button.onclick = function() { // Use onclick to re-attach handler cleanly
+                        const index = this.dataset.index;
+                        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                        if (cart[index]) {
+                            cart[index].quantity += 1;
+                            localStorage.setItem('cart', JSON.stringify(cart));
+                            renderCart();
+                        }
+                    };
+                });
+
+                // Decrement Quantity
+                document.querySelectorAll('.decrement-quantity').forEach(button => {
+                    button.onclick = function() { // Use onclick to re-attach handler cleanly
+                        const index = this.dataset.index;
+                        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                        if (cart[index] && cart[index].quantity > 1) {
+                            cart[index].quantity -= 1;
+                            localStorage.setItem('cart', JSON.stringify(cart));
+                            renderCart();
+                        }
+                    };
+                });
+
+                // Remove Item
+                document.querySelectorAll('.remove-item').forEach(button => {
+                    button.onclick = function() { // Use onclick to re-attach handler cleanly
+                        const index = this.dataset.index;
+                        if (confirm('Apakah Anda yakin ingin menghapus item ini dari keranjang?')) {
+                            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                            cart.splice(index, 1); // Remove item from array
+                            localStorage.setItem('cart', JSON.stringify(cart));
+                            renderCart();
+                        }
+                    };
+                });
+            }
+
+            // Event listener untuk tombol "Lanjutkan ke Pembayaran"
+            checkoutButton.addEventListener('click', function() {
+                // Pastikan data sudah tersimpan di localStorage oleh renderCart()
+                // Kemudian arahkan ke halaman pembayaran
+                window.location.href = 'payment.html';
+            });
+
+            // Initial render of the cart when the page loads
+            renderCart();
+        });
+    </script>
+</body>
+</html>
